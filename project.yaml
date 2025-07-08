@@ -1,0 +1,21 @@
+metadata:
+  name: breast-cancer-jovyan
+spec:
+  conda: ''
+  source: ''
+  desired_state: online
+  functions:
+  - url: Data_prep.py
+    name: load-cancer-data
+    kind: job
+    image: mlrun/mlrun
+  - url: Trainer.py
+    name: trainer
+    kind: job
+    image: mlrun/mlrun
+    handler: train
+  - url: serving.py
+    name: serving
+    kind: serving
+    image: mlrun/mlrun
+kind: project
